@@ -154,6 +154,7 @@ public class LoginForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    //valida el inici de sesion
     private void validar(){
         String user = txtUser.getText();
         String pass = txtPassword.getText();
