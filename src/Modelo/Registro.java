@@ -25,7 +25,7 @@ public class Registro {
         this.concepto = concepto;
     }
 
-    Registro() {
+    public Registro() {
         
     }
     

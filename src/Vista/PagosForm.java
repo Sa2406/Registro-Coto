@@ -8,6 +8,7 @@ package Vista;
 import Modelo.Registro;
 import Modelo.RegistroDB;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,7 +28,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
         initComponents();
         listarPagos();
     }
-    
+    //Metodo para listar en la tabla
     void listarPagos(){
         List<Registro> lista = registrodb.listar();
         modelo = (DefaultTableModel)TablaPagos.getModel();
@@ -93,19 +94,20 @@ public class PagosForm extends javax.swing.JInternalFrame {
         jLabel5.setText("Concepto:");
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtNombre.setText("jTextField3");
 
         txtCantidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtCantidad.setText("jTextField4");
 
         txtCasa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtCasa.setText("jTextField2");
 
         txtConcepto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtConcepto.setText("jTextField5");
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnModificar.setText("Modificar");
@@ -244,6 +246,61 @@ public class PagosForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        registrar();
+        limpiarVistaTabla();
+        listarPagos();
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    void limpiarVistaTabla(){
+        for(int i=0;i<modelo.getRowCount();i++){
+            modelo.removeRow(i);
+            i=i-1;
+        }
+    }
+    void registrar(){
+        
+        Registro registro;
+        
+        
+        
+        if(txtCasa.getText().equals("")||txtNombre.getText().equals("")||txtCantidad.getText().equals("")||txtConcepto.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Debes Llenar los campos");
+        }else if(validarDouble(txtCantidad.getText())==false){
+            JOptionPane.showMessageDialog(this,"El campo cantidad debe ser un Número");
+            txtCantidad.requestFocus();
+        }else{
+            
+            String noCasa = txtCasa.getText();
+            String nombre = txtNombre.getText();
+            double cantidad = Double.parseDouble(txtCantidad.getText());
+            String concepto = txtConcepto.getText();
+            
+            registro = new Registro(0,noCasa,nombre,cantidad,concepto);
+            registrodb.agregarPago(registro);
+            
+            JOptionPane.showMessageDialog(this,"Registro Exitoso");
+            txtCasa.setText("");
+            txtNombre.setText("");
+            txtCantidad.setText("");
+            txtConcepto.setText("");
+        }
+        
+        
+      
+        
+    }
+    //Valida que una cadena de texto sea convertible a Double
+    private boolean validarDouble(String cadena){
+        try{
+            Double.parseDouble(cadena);
+            return true;
+            
+        }catch(NumberFormatException e){
+            return false;
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaPagos;

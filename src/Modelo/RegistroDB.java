@@ -51,4 +51,23 @@ public class RegistroDB {
        
     }
     
+    public int agregarPago(Registro registro){
+        int r=0;
+        try{
+            conexion = Conexion.conectar();
+            ps = conexion.prepareStatement("INSERT INTO Registros(casa, nombre, cantidad, concepto)VALUES(?,?,?,?)");
+            ps.setString(1, registro.getNoCasa());
+            ps.setString(2, registro.getNombre());
+            ps.setDouble(3, registro.getCantidad());
+            ps.setString(4, registro.getConcepto());
+            
+            r = ps.executeUpdate();
+            conexion.close();
+        
+        }catch(SQLException e){
+            
+        }
+        return r;
+    }
+    
 }
