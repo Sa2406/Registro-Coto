@@ -123,6 +123,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txtID.setEditable(false);
+        txtID.setBackground(new java.awt.Color(204, 204, 204));
         txtID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btnLimpiarCampos.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -312,6 +313,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
         txtNombre.setText("");
         txtCantidad.setText("");
         txtConcepto.setText("");
+        txtCasa.requestFocus();
     }//GEN-LAST:event_btnLimpiarCamposActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
