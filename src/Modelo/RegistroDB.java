@@ -91,4 +91,19 @@ public class RegistroDB {
         return r;
     }
     
+    public void eliminarPAgo(int id){
+        
+        try{
+            conexion = Conexion.conectar();
+            ps = conexion.prepareStatement("DELETE FROM Registros WHERE idRegistro =?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            conexion.close();
+        
+        }catch(SQLException e){
+            
+        }
+        
+    }
+    
 }

@@ -121,6 +121,11 @@ public class PagosForm extends javax.swing.JInternalFrame {
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         txtID.setEditable(false);
         txtID.setBackground(new java.awt.Color(204, 204, 204));
@@ -322,13 +327,19 @@ public class PagosForm extends javax.swing.JInternalFrame {
         listarPagos();
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    void limpiarVistaTabla(){
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        eliminar();
+        limpiarVistaTabla();
+        listarPagos();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void limpiarVistaTabla(){
         for(int i=0;i<modelo.getRowCount();i++){
             modelo.removeRow(i);
             i=i-1;
         }
     }
-    void registrar(){
+    private void registrar(){
         
         Registro registro;
         
@@ -363,7 +374,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
         
     }
     
-    void actualiza(){
+    private void actualiza(){
         
         Registro registro;
         
@@ -392,7 +403,38 @@ public class PagosForm extends javax.swing.JInternalFrame {
             txtNombre.setText("");
             txtCantidad.setText("");
             txtConcepto.setText("");
+            txtCasa.requestFocus();
             
+        }
+        
+    }
+    
+    private void eliminar(){
+        
+        if(txtID.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Debes seleccionar una fila de la Tabla");
+        }else{
+            
+            int respuesta = JOptionPane.showConfirmDialog(this,"¿Deseas Eliminar este Registro?","¿Eliminar?",JOptionPane.YES_NO_OPTION);
+            
+            if(respuesta==JOptionPane.YES_OPTION){
+                
+                int id = Integer.parseInt(txtID.getText());
+                
+                registrodb.eliminarPAgo(id);
+                
+                JOptionPane.showMessageDialog(this,"Registro Eliminado Correctamente");
+                
+                txtID.setText("");
+                txtCasa.setText("");
+                txtNombre.setText("");
+                txtCantidad.setText("");
+                txtConcepto.setText("");
+                txtCasa.requestFocus();
+                
+            }else{
+                JOptionPane.showMessageDialog(this,"El Registro NO fue eliminado");
+            }
         }
         
     }
