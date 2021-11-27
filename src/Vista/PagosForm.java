@@ -332,7 +332,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
         limpiarVistaTabla();
         listarPagos();
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    //Metodo para limpiar la tabla
     private void limpiarVistaTabla(){
         for(int i=0;i<modelo.getRowCount();i++){
             modelo.removeRow(i);
