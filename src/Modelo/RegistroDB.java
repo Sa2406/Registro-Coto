@@ -70,4 +70,25 @@ public class RegistroDB {
         return r;
     }
     
+    public int actualizarPago(Registro registro){
+        int r=0;
+        try{
+            conexion = Conexion.conectar();
+            ps = conexion.prepareStatement("UPDATE Registros SET casa=?, nombre=?, cantidad=?, concepto=? WHERE idRegistro=?");
+            ps.setString(1, registro.getNoCasa());
+            ps.setString(2, registro.getNombre());
+            ps.setDouble(3, registro.getCantidad());
+            ps.setString(4, registro.getConcepto());
+            ps.setInt(5, registro.getId());
+            r = ps.executeUpdate();
+            conexion.close();
+        
+        }catch(SQLException e){
+            
+        }
+        
+        
+        return r;
+    }
+    
 }

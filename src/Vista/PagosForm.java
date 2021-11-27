@@ -68,6 +68,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         txtID = new javax.swing.JTextField();
+        btnLimpiarCampos = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPagos = new javax.swing.JTable();
@@ -111,6 +112,11 @@ public class PagosForm extends javax.swing.JInternalFrame {
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -118,6 +124,14 @@ public class PagosForm extends javax.swing.JInternalFrame {
 
         txtID.setEditable(false);
         txtID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        btnLimpiarCampos.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnLimpiarCampos.setText("Limpiar Campos");
+        btnLimpiarCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarCamposActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,12 +160,18 @@ public class PagosForm extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCantidad)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(109, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiarCampos)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,15 +192,21 @@ public class PagosForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiarCampos)
+                        .addContainerGap())))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 204, 0));
@@ -203,6 +229,11 @@ public class PagosForm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        TablaPagos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaPagosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaPagos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -218,7 +249,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -252,6 +283,43 @@ public class PagosForm extends javax.swing.JInternalFrame {
         listarPagos();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void TablaPagosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPagosMouseClicked
+        // TODO add your handling code here:
+        int fila = TablaPagos.getSelectedRow();
+        if(fila==-1){
+           JOptionPane.showMessageDialog(this,"Selecciona una fila de la tabla");
+        }else{
+            
+            String id = TablaPagos.getValueAt(fila, 0).toString();
+            String noCasa = TablaPagos.getValueAt(fila, 1).toString();
+            String nombre = TablaPagos.getValueAt(fila, 2).toString();
+            String cantidad = TablaPagos.getValueAt(fila, 3).toString();
+            String concepto = TablaPagos.getValueAt(fila, 4).toString();
+            
+            txtID.setText(id);
+            txtCasa.setText(noCasa);
+            txtNombre.setText(nombre);
+            txtCantidad.setText(cantidad);
+            txtConcepto.setText(concepto);
+            
+            
+        }
+    }//GEN-LAST:event_TablaPagosMouseClicked
+
+    private void btnLimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCamposActionPerformed
+        txtID.setText("");
+        txtCasa.setText("");
+        txtNombre.setText("");
+        txtCantidad.setText("");
+        txtConcepto.setText("");
+    }//GEN-LAST:event_btnLimpiarCamposActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        actualiza();
+        limpiarVistaTabla();
+        listarPagos();
+    }//GEN-LAST:event_btnModificarActionPerformed
+
     void limpiarVistaTabla(){
         for(int i=0;i<modelo.getRowCount();i++){
             modelo.removeRow(i);
@@ -269,6 +337,8 @@ public class PagosForm extends javax.swing.JInternalFrame {
         }else if(validarDouble(txtCantidad.getText())==false){
             JOptionPane.showMessageDialog(this,"El campo cantidad debe ser un Número");
             txtCantidad.requestFocus();
+        }else if(!txtID.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"El Registro no puede completarse ya que un registro con ese ID ya existe");
         }else{
             
             String noCasa = txtCasa.getText();
@@ -290,6 +360,40 @@ public class PagosForm extends javax.swing.JInternalFrame {
       
         
     }
+    
+    void actualiza(){
+        
+        Registro registro;
+        
+        if(txtID.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Debes seleccionar una fila de la Tabla");
+        }else if(txtCasa.getText().equals("")||txtNombre.getText().equals("")||txtCantidad.getText().equals("")||txtConcepto.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Debes llenar los campos faltantes");
+        }else if(validarDouble(txtCantidad.getText())==false){
+            JOptionPane.showMessageDialog(this,"El campo cantidad debe ser un Número");
+            txtCantidad.requestFocus();
+        }else{
+            
+            int id = Integer.parseInt(txtID.getText());
+            String noCasa = txtCasa.getText();
+            String nombre = txtNombre.getText();
+            double cantidad = Double.parseDouble(txtCantidad.getText());
+            String concepto = txtConcepto.getText();
+            
+            registro = new Registro(id,noCasa,nombre,cantidad,concepto);
+            
+            registrodb.actualizarPago(registro);
+            
+            JOptionPane.showMessageDialog(this,"Registro Modificado Correctamente");
+            txtID.setText("");
+            txtCasa.setText("");
+            txtNombre.setText("");
+            txtCantidad.setText("");
+            txtConcepto.setText("");
+            
+        }
+        
+    }
     //Valida que una cadena de texto sea convertible a Double
     private boolean validarDouble(String cadena){
         try{
@@ -306,6 +410,7 @@ public class PagosForm extends javax.swing.JInternalFrame {
     private javax.swing.JTable TablaPagos;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnLimpiarCampos;
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
