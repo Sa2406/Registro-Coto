@@ -23,6 +23,8 @@ Cuenta con dos clases Handler que se encargaran de gestionar las funcionalidades
 La base de datos que se utilizará será MySQL será creada y gestionada con MySQL workbench como servidor local.
 La Base de datos consta de 2 tablas:
 
+Nombre de la base de datos: registrocoto.
+
 Tabla Usuarios:
 
 -user VARCHAR(50)
@@ -62,3 +64,35 @@ Es necesario tener instalado Java 8 en cuarlquier versión para que la aplicaci�
 ¿Como Instalar la Aplicación?
 
 Se deben Instalar la carpeta lib, el JAR de la aplicación y la carpeta src con la carpeta de las imagenes respectivas en una ubicación de la computadora para poder ejecutar correctamente nuestro JAR.
+
+Instalación Local
+
+Tambien se debe instalar en este caso un servidor de base de datos SQL y crear la respectiva base de datos para que la aplicación funcione.
+
+#Uso y Contribución
+
+Dentro de la Aplicación se nos presenta un Menú de Opciones en la parte superior.
+Se muestran 3 opciones dentro de este:
+
+-Menú
+-Agregar
+-Buscar
+
+En la opción Menú se despliega la opción salir: Esta opción sirve para salir del programa.
+
+En la opción Agregar se despliega la opción Registrar Pago: En la que haciendo click se abrira una pestaña interna en la aplicación.
+Se nos muestran 4 campos editables con los que se interactuará para realizar funciones como Agregar Nuevo pago, Modificar Pago o Eliminar Pago.
+Y en la parte posterior se muestra una Tabla en la que se mostraran los datos de la base de datos con sus respectivos campos.
+
+Para Agregar un nuevo registro se deben llenar los campos solicitados y hacer click en el boton Agregar.
+
+Para modificar un registro se debe seleccionar una fila de la tabla y editar el campo o los campos que se requieran editar y hacer click en el boton modificar.
+
+Para eliminar un registro se debe seleccionar una fila de la tabla y hacer click en el boton eliminar.
+
+Volviendo al Menú:
+
+En la opcion Buscar se despliega la opción buscar por casa, en la que se despliega otra pestaña interna en la aplicación.
+
+En la que se nos muestra un campo para realizar la busqueda, se debe ingresar el numero de casa que se desea encontrar, Y la aplicación mostrará cada registro encontrado para dicha casa en la tabla de abajo.
+
