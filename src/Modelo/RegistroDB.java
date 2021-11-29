@@ -106,4 +106,34 @@ public class RegistroDB {
         
     }
     
+    public List buscarPorCasa(String casa){
+        List<Registro> registros = new ArrayList<>();
+        
+        try{
+            conexion = Conexion.conectar();
+            ps = conexion.prepareStatement("SELECT * FROM Registros WHERE casa =?");
+            ps.setString(1, casa);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+              Registro registro = new Registro();
+                
+                registro.setId(rs.getInt(1));
+                registro.setNoCasa(rs.getString(2));
+                registro.setNombre(rs.getString(3));
+                registro.setCantidad(rs.getDouble(4));
+                registro.setConcepto(rs.getString(5));
+                registros.add(registro);
+            }
+            
+            conexion.close();
+            
+        }catch(SQLException e){
+            
+        }
+        
+        return registros;
+        
+    }
+    
 }
